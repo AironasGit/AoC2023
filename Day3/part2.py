@@ -7,7 +7,7 @@ def main():
     numbers = []
     for i, line in enumerate(input):
         number = ''
-        gearId = 0
+        gearId = []
         toAdd = False
         for j, symbol in enumerate(line):
             if symbol.isdigit():
@@ -15,35 +15,35 @@ def main():
                 if i > 0:
                     if input[i - 1][j] == '*':
                         toAdd = True
-                        gearId = int(str(i - 1) + str(j))
+                        gearId = [i - 1, j]
                     if j > 0:
                         if input[i - 1][j - 1] == '*':
                             toAdd = True
-                            gearId = int(str(i - 1) + str(j - 1))
+                            gearId = [i - 1, j - 1]
                     if j < len(line) - 1:
                         if input[i - 1][j + 1] == '*':
                             toAdd = True
-                            gearId = int(str(i - 1) + str(j + 1))
+                            gearId = [i - 1, j + 1]
                 if j > 0:
                     if input[i][j - 1] == '*':
                         toAdd = True
-                        gearId = int(str(i) + str(j - 1))
+                        gearId = [i, j - 1]
                 if j < len(line) - 1:
                     if input[i][j + 1] == '*':
                         toAdd = True
-                        gearId = int(str(i) + str(j + 1))
+                        gearId = [i, j + 1]
                 if i < len(input) - 1:
                     if input[i + 1][j] == '*':
                         toAdd = True
-                        gearId = int(str(i + 1) + str(j))
+                        gearId = [i + 1, j]
                     if j > 0:
                         if input[i + 1][j - 1] == '*':
                             toAdd = True
-                            gearId = int(str(i + 1) + str(j - 1))
+                            gearId = [i + 1, j - 1]
                     if j < len(line) - 1:
                         if input[i + 1][j + 1] == '*':
                             toAdd = True
-                            gearId = int(str(i + 1) + str(j + 1))
+                            gearId = [i + 1, j + 1]
                 if j == len(line) - 1 and toAdd: #Edge case when the number is at the end of the line
                     numbers.append([gearId, int(number)])
                     toAdd = False
