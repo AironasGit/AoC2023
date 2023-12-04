@@ -16,9 +16,8 @@ def main():
             for myNumber in card[2]:
                 if winningNumber == myNumber:
                     count += 1
-        for k in range(0, card[0]):
-            for j in range(0, count):
-                cards[i + 1 + j ][0] += 1
+        for j in range(0, count):
+            cards[i + 1 + j ][0] += card[0]
     answer = 0
     for card in cards:
         answer += card[0]
