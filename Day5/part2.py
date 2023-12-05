@@ -41,21 +41,13 @@ def main():
                             newRanges.append([destinationRangeStart + (rang[0] - sourceRangeStart), destinationRangeStart + (rang[1] - sourceRangeStart)])
                             ranges[i][0] = 0
                             ranges[i][1] = 0
-                newRanges += ranges
-                ranges = newRanges
+                ranges += newRanges
                 toMap.clear()
+    lowestNumbers = []
     for i, rang in enumerate(ranges):
-        if rang[0] == rang[1]:
-            ranges[i] = ''
-        if rang[1] < rang[0]:
-            ranges[i] = ''
-        if rang[0] + 1 == rang[1]:
-            ranges[i] = ''
-    numbers = []
-    for i, rang in enumerate(ranges):
-        if rang != '':
-            numbers.append(rang[0])
-    answer = min(numbers)
+        if rang[0] + 1 < rang[1]:
+            lowestNumbers.append(rang[0])
+    answer = min(lowestNumbers)
     print(answer)
 
 
